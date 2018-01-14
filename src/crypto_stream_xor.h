@@ -9,7 +9,16 @@
 extern "C" {
 #endif
 
+#define crypto_stream_xor_KEYBYTES crypto_stream_KEYBYTES
+#define crypto_stream_xor_NONCEBYTES crypto_stream_NONCEBYTES
+
 typedef crypto_stream_xsalsa20_xor_state crypto_stream_xor_state;
+
+size_t
+crypto_stream_xor_keybytes(void);
+
+size_t
+crypto_stream_xor_noncebytes(void);
 
 size_t
 crypto_stream_xor_statebytes(void);

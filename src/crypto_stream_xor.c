@@ -5,6 +5,18 @@ extern "C" {
 #endif
 
 size_t
+crypto_stream_xor_keybytes(void)
+{
+  return crypto_stream_xor_KEYBYTES;
+}
+
+size_t
+crypto_stream_xor_noncebytes(void)
+{
+  return crypto_stream_xor_NONCEBYTES;
+}
+
+size_t
 crypto_stream_xor_statebytes(void)
 {
   return crypto_stream_xsalsa20_xor_statebytes();

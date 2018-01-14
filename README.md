@@ -26,8 +26,8 @@ crypto_stream_xor_state state;
 #define CIPHERTEXT_LEN PART1_LEN + PART2_LEN + PART3_LEN
 
 
-unsigned char key[crypto_stream_NONCEBYTES];
-unsigned char nonce[crypto_stream_KEYBYTES];
+unsigned char key[crypto_stream_xor_NONCEBYTES];
+unsigned char nonce[crypto_stream_xor_KEYBYTES];
 unsigned char ciphertext[CIPHERTEXT_LEN];
 unsigned char plaintext[CIPHERTEXT_LEN];
 

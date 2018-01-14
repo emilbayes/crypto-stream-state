@@ -6,6 +6,18 @@ extern "C" {
 #endif
 
 size_t
+crypto_stream_chacha20_xor_keybytes(void)
+{
+  return crypto_stream_chacha20_KEYBYTES;
+}
+
+size_t
+crypto_stream_chacha20_xor_noncebytes(void)
+{
+  return crypto_stream_chacha20_NONCEBYTES;
+}
+
+size_t
 crypto_stream_chacha20_xor_statebytes(void)
 {
   return sizeof(crypto_stream_chacha20_xor_state);

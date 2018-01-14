@@ -7,6 +7,9 @@
 extern "C" {
 #endif
 
+#define crypto_stream_xsalsa20_xor_KEYBYTES crypto_stream_xsalsa20_KEYBYTES
+#define crypto_stream_xsalsa20_xor_NONCEBYTES crypto_stream_xsalsa20_NONCEBYTES
+
 #define crypto_stream_xsalsa20_BLOCKBYTES 64
 
 // Packing? Alignment?
@@ -18,6 +21,12 @@ typedef struct crypto_stream_xsalsa20_xor_state {
     uint8_t remainder;
     uint64_t block_counter;
 } crypto_stream_xsalsa20_xor_state;
+
+size_t
+crypto_stream_xsalsa20_xor_keybytes(void);
+
+size_t
+crypto_stream_xsalsa20_xor_noncebytes(void);
 
 size_t
 crypto_stream_xsalsa20_xor_statebytes(void);
