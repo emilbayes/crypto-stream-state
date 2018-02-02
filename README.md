@@ -9,6 +9,7 @@
 ## Usage
 
 ```c
+#include <string.h>
 #include <sodium.h>
 #include "crypto_stream_xor.h"
 
@@ -32,7 +33,7 @@ unsigned char ciphertext[CIPHERTEXT_LEN];
 unsigned char plaintext[CIPHERTEXT_LEN];
 
 int main (int argc, char *argv[]) {
-  crypto_stream_keygen(&key);
+  crypto_stream_keygen(key);
   randombytes_buf(&nonce, crypto_stream_KEYBYTES);
 
   unsigned char *c = ciphertext;
@@ -43,7 +44,7 @@ int main (int argc, char *argv[]) {
   int ret;
 
   // Encrypt part
-  ret = crypto_stream_xor_init(&state, &key, &nonce);
+  ret = crypto_stream_xor_init(&state, nonce, key);
   if (ret) return ret;
 
   ret = crypto_stream_xor_update(&state, c, PART1, PART1_LEN);
@@ -65,7 +66,7 @@ int main (int argc, char *argv[]) {
 
   c -= CIPHERTEXT_LEN; // Rewind c first
 
-  ret = crypto_stream_xor_init(&state, &key, &nonce);
+  ret = crypto_stream_xor_init(&state, nonce, key);
   if (ret) return ret;
 
   ret = crypto_stream_xor_update(&state, p, c, 10);
