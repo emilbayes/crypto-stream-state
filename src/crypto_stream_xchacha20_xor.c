@@ -28,11 +28,6 @@ crypto_stream_xchacha20_xor_init(crypto_stream_xchacha20_xor_state *state,
                                 unsigned const char nonce[crypto_stream_xchacha20_NONCEBYTES],
                                 unsigned const char key[crypto_stream_xchacha20_KEYBYTES])
 {
-  // If arguments are outright dangerous
-  if (0) {
-    sodium_misuse();
-  }
-
   state->remainder = 0;
   state->block_counter = 0;
   memcpy(state->nonce, nonce, sizeof(state->nonce));
@@ -47,6 +42,9 @@ crypto_stream_xchacha20_xor_update(crypto_stream_xchacha20_xor_state *state,
                                   unsigned char *c, const unsigned char *m,
                                   unsigned long long mlen)
 {
+  if (state->block_counter * crypto_stream_xchacha20_BLOCKBYTES + mlen > crypto_stream_xchacha20_MESSAGEBYTES_MAX) {
+    sodium_misuse();
+  }
   // If we have data left over of the next block
   if (state->remainder) {
     uint64_t offset = 0;
