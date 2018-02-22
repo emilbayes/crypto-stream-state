@@ -1,0 +1,18 @@
+{
+  "name": "crypto-stream-state",
+  "version": "1.0.0",
+  "repo": "emilbayes/crypto-stream-state",
+  "description": "Extension of libsodium crypto_stream_xor to do stateful streaming",
+  "keywords": ["crypto", "stream", "state", "sodium"],
+  "src": [
+    "crypto_stream_chacha20_xor.c",
+    "crypto_stream_chacha20_xor.h",
+    "crypto_stream_xchacha20_xor.c",
+    "crypto_stream_xchacha20_xor.h",
+    "crypto_stream_xor.c",
+    "crypto_stream_xor.h",
+    "crypto_stream_xsalsa20_xor.c",
+    "crypto_stream_xsalsa20_xor.h"
+  ]
+}
+
